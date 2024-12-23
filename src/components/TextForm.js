@@ -17,7 +17,7 @@ export default function TextForm(props) {
 
     // Copy text to clipboard
     const handleCopy = () => {
-        console.log("Copy");
+        console.log("Copying text to clipboard...");
         const textArea = document.getElementById("myBox");
         textArea.select();
         navigator.clipboard.writeText(textArea.value);
@@ -41,7 +41,7 @@ export default function TextForm(props) {
 
     return (
         <>
-            <div className="container">
+            <div className="container" style={{ color: props.mode === "dark" ? "white" : "black" }}>
                 <h1>{props.heading}</h1>
                 <div className="mb-3">
                     <textarea
@@ -51,6 +51,7 @@ export default function TextForm(props) {
                         id="myBox"
                         rows="8"
                         placeholder="Enter text here"
+                        style={{ backgroundColor: props.mode === "dark" ? "gray" : "white", color: props.mode === "dark" ? "white" : "black" }}
                     ></textarea>
                 </div>
                 <button className="btn btn-primary" onClick={handleUpClick}>
@@ -66,7 +67,8 @@ export default function TextForm(props) {
                     Copy Text
                 </button>
             </div>
-            <div className="container my-2">
+
+            <div className="container my-2" style={{ color: props.mode === "dark" ? "white" : "black" }}>
                 <h2>Your Text Summary</h2>
                 <p>
                     {calculateWordCount()} words and {text.length} characters
